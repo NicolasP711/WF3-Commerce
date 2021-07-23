@@ -2,7 +2,6 @@ import { Row, Col } from 'react-bootstrap'
 import CardItem from '../../components/card-item/CardItem'
 
 function Home({ list }) {
-  console.log(list)
   return (
     <Row>
       {!list ? (

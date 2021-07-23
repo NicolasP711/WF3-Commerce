@@ -16,7 +16,7 @@ const TableItems = ({ list, setShowModal, setId }) => {
           <h2>Loading ...</h2>
         ) : (
           list.map(({ id, title, price }) => (
-            <tr>
+            <tr key={id}>
               <td>{id}</td>
               <td>{title}</td>
               <td>{price}€</td>

@@ -1,7 +1,7 @@
 import { Button, Form } from 'react-bootstrap'
 import { useFormik } from 'formik'
 import validate from './validation'
-import { v4 as uuidv4 } from 'uuid'
+
 
 const FormItem = ({ addItem }) => {
   const formik = useFormik({
@@ -10,7 +10,6 @@ const FormItem = ({ addItem }) => {
       price: '',
       image: '',
       description: '',
-      id: uuidv4()
     },
     validate,
     onSubmit: values => {

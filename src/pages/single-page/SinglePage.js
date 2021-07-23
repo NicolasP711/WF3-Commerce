@@ -1,7 +1,7 @@
 import { Button, Row, Col } from 'react-bootstrap'
 import { useParams, useHistory } from 'react-router-dom'
 
-const SinglePage = ({ list }) => {
+const SinglePage = ({ list, addItem }) => {
   const params = useParams()
   const history = useHistory()
   const itemFound = list.find(item => item.id.toString() === params.id)
@@ -20,7 +20,11 @@ const SinglePage = ({ list }) => {
         <h2>{title}</h2>
         <p className='my-5'>{description}</p>
         <p className='mb-5 lead'>{price + '€'}</p>
-        <Button>Ajouter au panier</Button>
+        <Button onClick={() =>
+          {
+            addItem(itemFound)
+            history.push('/basket')
+            }}>Ajouter au panier</Button>
         <Button onClick={() => history.goBack()} variant='link'>
           Retour
         </Button>

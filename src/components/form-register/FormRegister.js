@@ -2,8 +2,10 @@ import { Button, Col, Form, Row } from 'react-bootstrap'
 import { useFormik } from 'formik'
 import validate from './validation'
 import { register, loginWithGoogle } from '../../firebase'
+import { useHistory } from 'react-router-dom'
 
 const FormRegister = () => {
+  const history = useHistory()
   const formik = useFormik({
     initialValues: {
       firstname: '',
@@ -14,8 +16,9 @@ const FormRegister = () => {
       admin: ''
     },
     validate,
-    onSubmit: values => {
-      register(values)
+    onSubmit: async values => {
+      await register(values)
+      history.push('/')
     }
   })
 
@@ -114,7 +117,7 @@ const FormRegister = () => {
       <Button className='me-3' type='submit'>
         S'enregistrer
       </Button>
-      <Button onClick={loginWithGoogle} variant='info' type='button'>
+      <Button onClick={() => loginWithGoogle(history)} variant='info' type='button'>
         <i className='fab fa-google'></i> S'enregistrer avec Google
       </Button>
     </Form>
